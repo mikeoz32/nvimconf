@@ -96,6 +96,39 @@ return packer.startup(function(use)
     end
   }
 
+  use {
+    'lewis6991/gitsigns.nvim',
+    tag = 'release',
+    config = function()
+      require('gitsigns').setup({
+        sign_column = true,
+        numhl = true,
+        linehl = true,
+
+        current_line_blame = true, -- enable blame
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = 'right_align'
+        }
+      })
+    end
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function ()
+      require('nvim-treesitter.configs').setup({
+        ensure_installed = {'lua', 'typescript', 'javascript', 'go', 'python', 'toml', 'json', 'sql'},
+        sync_install = false,
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false
+        }
+      })
+    end
+  }
+
   --- themes
   use 'folke/tokyonight.nvim'
   use 'nvim-tree/nvim-web-devicons'

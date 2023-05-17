@@ -77,7 +77,11 @@ return packer.startup(function(use)
     config = function ()
       require("vgit").setup({
         live_blame = {
-          enabled = true
+          enabled = true,
+          format = function (blame, git_config)
+            return string.format('%s - %s', blame.author, blame.commit_message)
+            
+          end
         }
       })
     end
@@ -109,6 +113,16 @@ return packer.startup(function(use)
     requires = {'nvim-tree/nvim-web-devicons'},
     config = function()
       require('lualine').setup()
+    end
+  }
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
     end
   }
 end)

@@ -73,25 +73,17 @@ return packer.startup(function(use)
   use "fatih/vim-go"
 
   use {
-    "tanvirtin/vgit.nvim",
-    config = function ()
-      require("vgit").setup({
-        live_blame = {
-          enabled = true,
-          format = function (blame, git_config)
-            return string.format('%s - %s', blame.author, blame.commit_message)
-            
-          end
-        }
-      })
-    end
-  }
-
-  use {
     "nvim-telescope/telescope.nvim",
     config = function()
       tele = require("telescope")
       tele.load_extension("projects")
+    end
+  }
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = function()
+      require("toggleterm").setup()
     end
   }
   -- Project management

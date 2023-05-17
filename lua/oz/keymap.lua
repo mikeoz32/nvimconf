@@ -81,4 +81,13 @@ vim.keymap.set("n", "<leader>zz", zen.toggle)
 -- Git 
 -- local term = require("oz.term")
 -- Git Toggle
--- vim.keymap.set("n", "<leader>gt", term.lazygit)
+--
+
+-- Project
+-- vim.keymap.set("n", "<leader>pp", function()
+  -- t = require("telescope")
+  -- t.extensions.projects.projects({})
+-- end)
+
+local terminals = require("oz.terminals")
+vim.keymap.set("n", "<leader>gt", terminals.lazygit_toggle)

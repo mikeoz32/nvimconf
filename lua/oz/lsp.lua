@@ -21,7 +21,5 @@ lsp.lua_ls.setup(commonOptions)
 lsp.rust_analyzer.setup(commonOptions)
 lsp.tsserver.setup(commonOptions)
 lsp.docker_compose_language_service.setup(commonOptions)
-lsp.pyright.setup({
-   capabilities = capabilities,
-})
+lsp.pyright.setup(commonOptions)
 lsp.gopls.setup(commonOptions)

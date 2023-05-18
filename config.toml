@@ -1,2 +1,8 @@
 [editor]
 color-scheme="dracula"
+
+
+[lsp.go]
+language-server="gopls"
+
+[package]

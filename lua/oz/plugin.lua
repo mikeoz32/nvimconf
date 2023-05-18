@@ -86,6 +86,22 @@ return packer.startup(function(use)
       require("toggleterm").setup()
     end
   }
+
+  use {
+
+    "nvim-tree/nvim-tree.lua",
+    config = function ()
+      require("nvim-tree").setup()
+    end
+
+  }
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function ()
+      require('Comment').setup()
+    end
+  }
   -- Project management
   use {
     "ahmedkhalf/project.nvim",
@@ -109,7 +125,7 @@ return packer.startup(function(use)
           changedelete = { text = '~' },
           untracked    = { text = '┆' },
         },
-        sign_column = true,
+        signcolumn = true,
         numhl = true,
         linehl = true,
 
@@ -151,11 +167,18 @@ return packer.startup(function(use)
   use {
     "folke/zen-mode.nvim",
     config = function()
-      require("zen-mode").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require("zen-mode").setup()
+    end
+  }
+  use {
+    "xiyaowong/transparent.nvim",
+    config = function ()
+      require("transparent").setup({
+        'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+        'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+        'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+        'SignColumn', 'CursorLineNr', 'EndOfBuffer',
+      })
     end
   }
 end)

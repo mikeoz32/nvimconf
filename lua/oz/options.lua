@@ -34,6 +34,10 @@ vim.opt.sidescrolloff = 8
 
 vim.opt.shortmess:append "c"
 
+vim.g.transparent_enabled = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 

@@ -1,5 +1,6 @@
 local tscope = require("telescope.builtin")
 local telescope = require("oz.telescope")
+local tree = require("nvim-tree.api")
 
 local opts = { noremap = true, silent = true }
 
@@ -67,7 +68,8 @@ keymap("v",">",">gv", opts)
 
 
 -- Directory Browse
-vim.keymap.set("n", "<leader>db", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>db", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>db", tree.tree.toggle)
 -- keymap("n", "<leader>db", ":NvimTreeToggle<cr>", opts)
 -- keymap("n", "<leader>df", ":NvimTreeFindFileToggle<cr>", opts)
 vim.keymap.set("n", "<leader>ds", tscope.find_files)

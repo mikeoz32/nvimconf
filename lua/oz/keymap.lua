@@ -1,3 +1,6 @@
+local tscope = require("telescope.builtin")
+local telescope = require("oz.telescope")
+
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
@@ -39,11 +42,16 @@ keymap("n", "<C-Down>", ":resize +2<cr>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<cr>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<cr>", opts)
 
--- Buffers
--- Buffer next
-keymap("n", "<leader>bn", ":bnext<cr>", opts)
--- Buffer previous
-keymap("n", "<leader>bp", ":bprevious<cr>", opts)
+wk.register({
+  b = {
+    name = "Buffers",
+    n = {"<cmd>bnext<cr>","Next buffer"},
+    p = {"<cmd>bprevious<cr>","Previous buffer"},
+    d = {"<cmd>:bd<cr>","Delete buffer from buffers list"},
+    s = {tscope.buffers, "Search buffers"}
+  }, 
+},{prefix="<leader>"})
+
 
 -- Files 
 -- Write file
@@ -59,8 +67,6 @@ keymap("v",">",">gv", opts)
 
 
 -- Directory Browse
-local tscope = require("telescope.builtin")
-local telescope = require("oz.telescope")
 vim.keymap.set("n", "<leader>db", vim.cmd.Ex)
 -- keymap("n", "<leader>db", ":NvimTreeToggle<cr>", opts)
 -- keymap("n", "<leader>df", ":NvimTreeFindFileToggle<cr>", opts)
@@ -78,16 +84,22 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 
 local zen = require("zen-mode")
 vim.keymap.set("n", "<leader>zz", zen.toggle)
--- Git 
--- local term = require("oz.term")
--- Git Toggle
---
-
--- Project
--- vim.keymap.set("n", "<leader>pp", function()
-  -- t = require("telescope")
-  -- t.extensions.projects.projects({})
--- end)
 
 local terminals = require("oz.terminals")
-vim.keymap.set("n", "<leader>gt", terminals.lazygit_toggle)
+
+wk.register({
+  g = {
+    name = "Git",
+    t = {terminals.lazygit_toggle, "Open lazy git"},
+    s = {
+      name = "Search",
+      s = {
+        tscope.git_status, "Show git status"
+      },
+      c = {
+        tscope.git_commits, "List git commits"
+      }
+    }
+  }
+}, {prefix="<leader>"})
+vim.keymap.set("n", "<leader>tt", terminals.toggle_term)

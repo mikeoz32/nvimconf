@@ -2,7 +2,17 @@
 color-scheme="dracula"
 
 
+# language server configuration
+
+#go configuration
 [lsp.go]
 language-server="gopls"
 
-[package]
+# project.nvim config
+[project]
+patterns = [".git", "package.json", "requirements.txt"]
+
+
+# tree sitter highlights
+[highlight]
+languages = ['lua', 'typescript', 'javascript', 'go', 'python', 'toml', 'json', 'sql']

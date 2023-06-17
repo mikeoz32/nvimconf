@@ -6,8 +6,15 @@ local IDE = {}
 
 Config = {}
 
+local function _ensureInstalled (servers)
+  local mLsp = require("mason-lspconfig")
+  mLsp.setup({
+    ensure_installed = servers
+  })
+end
+
 function Config:new ()
-  o = {
+  local o = {
     file_name = "config.toml",
     config = {}
   }
@@ -29,10 +36,15 @@ function Config:config_lsp()
     return
   end
 
+  local language_servers = {}
+
   for lsp, conf in pairs(lsp_config) do
-    print(lsp)
-    print(conf)
+    local server = conf['language_server']
+    if server ~= nil then
+      table.insert(language_servers, server)
+    end
   end
+  _ensureInstalled(language_servers)
 end
 
 IDE.setup = function()

@@ -21,6 +21,7 @@ wk.register({
     h = {"<C-w>h", "Go to window left"},
     j = {"<C-w>j", "Go to windows down"},
     k = {"<C-w>k", "Go to window up"},
+    l = {"<C-w>l", "Go to window up"},
     s = {"<cmd>sp<cr>", "Split window"},
     c = {"<cmd>close<cr>", "Close window"},
     q = {"<cmd>q<cr>", "Quit Window"}
@@ -79,7 +80,8 @@ wk.register({
   p = {
     name = "Project",
     p = {telescope.select_project, "Show recent projects"},
-  }, 
+    s = {tscope.live_grep, "Search in project files"}
+  },
 },{prefix="<leader>"})
 -- LSP
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
@@ -104,4 +106,7 @@ wk.register({
     }
   }
 }, {prefix="<leader>"})
+-- terminal
 vim.keymap.set("n", "<leader>tt", terminals.toggle_term)
+-- keymap in terminal mode `t`
+vim.keymap.set('t', '<ESC>', [[<C-\><C-n>]])

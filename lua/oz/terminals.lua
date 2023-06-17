@@ -5,7 +5,7 @@ local lazy_git = Terminal:new({
   direction = "float"
 })
 
-local base_term = Terminal:new({})
+local base_term = Terminal:new({cmd="pwsh & venv/Scripts/activate.ps1", direction="tab"})
 
 local Terminals = {}
 

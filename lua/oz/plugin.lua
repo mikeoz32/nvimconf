@@ -182,6 +182,19 @@ return packer.startup(function(use)
     end
   }
 
+  -- database explorer
+  use {
+    "tpope/vim-dadbod",
+    opt = true,
+    requires = {
+      "kristijanhusak/vim-dadbod-ui",
+      "kristijanhusak/vim-dadbod-completion",
+    },
+    config = function ()
+      require("oz.db").setup()
+    end,
+    cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
+  }
   -- plugin development
   use {
     "folke/neodev.nvim",

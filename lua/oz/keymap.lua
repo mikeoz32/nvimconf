@@ -110,3 +110,14 @@ wk.register({
 vim.keymap.set("n", "<leader>tt", terminals.toggle_term)
 -- keymap in terminal mode `t`
 vim.keymap.set('t', '<ESC>', [[<C-\><C-n>]])
+
+-- database explorer
+wk.register({
+  D = {
+    name = "Database",
+    u = { "<Cmd>DBUIToggle<Cr>", "Toggle UI" },
+    f = { "<Cmd>DBUIFindBuffer<Cr>", "Find buffer" },
+    r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
+    q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
+  }
+})

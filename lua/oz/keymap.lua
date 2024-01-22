@@ -74,6 +74,7 @@ vim.keymap.set("n", "<leader>db", tree.tree.toggle)
 -- keymap("n", "<leader>db", ":NvimTreeToggle<cr>", opts)
 -- keymap("n", "<leader>df", ":NvimTreeFindFileToggle<cr>", opts)
 vim.keymap.set("n", "<leader>ds", tscope.find_files)
+vim.keymap.set("n", "<leader>ff", tscope.live_grep)
 vim.keymap.set("n", "<leader>cs", telescope.search_in_config_dir )
 
 wk.register({
@@ -120,4 +121,14 @@ wk.register({
     r = { "<Cmd>DBUIRenameBuffer<Cr>", "Rename buffer" },
     q = { "<Cmd>DBUILastQueryInfo<Cr>", "Last query info" },
   }
-})
+}, {prefix="<leader>"})
+
+-- code inspection
+wk.register({
+  c = {
+    name="Code Inspection",
+    r = {tscope.lsp_references, "List LSP references"},
+    i = {tscope.lsp_incoming_calls, "List LSP incoming calls"}
+  }
+}, {prefix="<leader>"})
+

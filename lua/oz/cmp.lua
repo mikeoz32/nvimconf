@@ -43,7 +43,8 @@ cmp.setup({
   sources = {
     {name="nvim_lsp"},
     {name="buffer"},
-    {name="path"}
+    {name="path"},
+    {name="orgmode"},
   },
   mapping = cmp.mapping.preset.insert({
     ['<CR>'] = cmp.mapping.confirm({

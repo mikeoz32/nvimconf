@@ -142,12 +142,12 @@ return packer.startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     config = function ()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = {'lua', 'typescript', 'javascript', 'go', 'python', 'toml', 'json', 'sql'},
+        ensure_installed = {'lua', 'typescript', 'javascript', 'go', 'python', 'toml', 'json', 'sql','org'},
         sync_install = false,
         auto_install = true,
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = false
+          additional_vim_regex_highlighting = {'org'}
         }
       })
     end
@@ -202,5 +202,18 @@ return packer.startup(function(use)
       require("neodev").setup()
     end
   }
+
+  -- org mode
+  use {
+    "nvim-orgmode/orgmode",
+    config = function ()
+      require('orgmode').setup_ts_grammar()
+      require("orgmode").setup({
+        org_agenda_files= {"~/org/agenda"},
+        org_default_notes_file = "~/org/notes.org",
+      })
+    end
+  }
+
 end)
 

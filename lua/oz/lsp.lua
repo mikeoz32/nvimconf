@@ -7,7 +7,7 @@ if not lsp_ok or not mason_lsp_ok or not mason_ok then
   return
 end
 
-local servers = {"lua_ls", "rust_analyzer", "pyright","docker_compose_language_service", "tsserver", "gopls"}
+local servers = {"lua_ls", "rust_analyzer", "pyright","docker_compose_language_service", "tsserver", "gopls","html","volar"}
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 mason.setup()
@@ -23,3 +23,5 @@ lsp.tsserver.setup(commonOptions)
 lsp.docker_compose_language_service.setup(commonOptions)
 lsp.pyright.setup(commonOptions)
 lsp.gopls.setup(commonOptions)
+lsp.html.setup(commonOptions)
+lsp.volar.setup(commonOptions)

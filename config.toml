@@ -8,6 +8,9 @@ color-scheme="dracula"
 [lsp.go]
 language-server="gopls"
 
+[lsp.ruff]
+language-server="ruff_lsp"
+
 # project.nvim config
 [project]
 patterns = [".git", "package.json", "requirements.txt"]
@@ -16,3 +19,4 @@ patterns = [".git", "package.json", "requirements.txt"]
 # tree sitter highlights
 [highlight]
 languages = ['lua', 'typescript', 'javascript', 'go', 'python', 'toml', 'json', 'sql']
+

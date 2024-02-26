@@ -70,6 +70,20 @@ return packer.startup(function(use)
   }
 
   use "williamboman/mason-lspconfig"
+  use {
+    "mfussenegger/nvim-lint",
+    config = function ()
+      lint = require("lint")
+      lint.linters_by_ft = {
+        python = {'ruff'}
+      }
+      vim.api.nvim_create_autocmd( { "BufWritePost" }, {
+        callback = function ()
+          lint.try_lint()
+        end
+      })
+    end
+  }
   use "fatih/vim-go"
 
   use {
@@ -79,6 +93,7 @@ return packer.startup(function(use)
       tele.load_extension("projects")
     end
   }
+  use "folke/trouble.nvim"
   use {
     "akinsho/toggleterm.nvim",
     tag = '*',

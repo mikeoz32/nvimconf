@@ -70,12 +70,18 @@ keymap("v",">",">gv", opts)
 
 -- Directory Browse
 -- vim.keymap.set("n", "<leader>db", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>db", tree.tree.toggle)
 -- keymap("n", "<leader>db", ":NvimTreeToggle<cr>", opts)
 -- keymap("n", "<leader>df", ":NvimTreeFindFileToggle<cr>", opts)
-vim.keymap.set("n", "<leader>ds", tscope.find_files)
-vim.keymap.set("n", "<leader>ff", tscope.live_grep)
 vim.keymap.set("n", "<leader>cs", telescope.search_in_config_dir )
+
+wk.register({
+  d = {
+    name = "Directory",
+    b = {tree.tree.toggle, "Browse directory"},
+    s = {tscope.find_files, "Search for files in directory"},
+    f = {tscope.live_grep, "Find in files"}
+  }
+},{prefix="<leader>"})
 
 wk.register({
   p = {
@@ -85,7 +91,15 @@ wk.register({
   },
 },{prefix="<leader>"})
 -- LSP
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+
+wk.register({
+  g = {
+    name = "Go to",
+    d = {vim.lsp.buf.definition, "Definition"},
+    D = {vim.lsp.buf.declaration, "Declaration"},
+    i = {vim.lsp.buf.implementation, "Implementation"}
+  }
+},{})
 
 local zen = require("zen-mode")
 vim.keymap.set("n", "<leader>zz", zen.toggle)
@@ -127,8 +141,10 @@ wk.register({
 wk.register({
   c = {
     name="Code Inspection",
-    r = {tscope.lsp_references, "List LSP references"},
-    i = {tscope.lsp_incoming_calls, "List LSP incoming calls"}
+    r = {function() require("trouble").toggle("lsp_references") end, "List LSP references"},
+    i = {tscope.lsp_incoming_calls, "List LSP incoming calls"},
+    s = {tscope.lsp_document_symbols, "List of document symbols"},
+    f = {function () vim.lsp.buf.format() end, "Formate buffer"}
   }
 }, {prefix="<leader>"})
 

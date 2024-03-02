@@ -4,7 +4,7 @@ local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTRSTAP = fn.system {
-   "git",
+    "git",
     "clone",
     "--depth",
     "1",
@@ -34,7 +34,7 @@ end
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float {border = rounded}
+      return require("packer.util").float { border = rounded }
     end
   }
 }
@@ -72,13 +72,13 @@ return packer.startup(function(use)
   use "williamboman/mason-lspconfig"
   use {
     "mfussenegger/nvim-lint",
-    config = function ()
+    config = function()
       lint = require("lint")
       lint.linters_by_ft = {
-        python = {'ruff'}
+        python = { 'ruff' }
       }
-      vim.api.nvim_create_autocmd( { "BufWritePost" }, {
-        callback = function ()
+      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+        callback = function()
           lint.try_lint()
         end
       })
@@ -105,7 +105,7 @@ return packer.startup(function(use)
   use {
 
     "nvim-tree/nvim-tree.lua",
-    config = function ()
+    config = function()
       require("nvim-tree").setup()
     end
 
@@ -113,7 +113,7 @@ return packer.startup(function(use)
 
   use {
     'numToStr/Comment.nvim',
-    config = function ()
+    config = function()
       require('Comment').setup()
     end
   }
@@ -122,7 +122,7 @@ return packer.startup(function(use)
     "ahmedkhalf/project.nvim",
     config = function()
       require("project_nvim").setup {
-        patterns = {".git","package.json", "requiarements.txt"}
+        patterns = { ".git", "package.json", "requiarements.txt" }
       }
     end
   }
@@ -154,15 +154,38 @@ return packer.startup(function(use)
   }
 
   use {
-    'nvim-treesitter/nvim-treesitter',
+    'tanvirtin/vgit.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
+
+  use "sindrets/diffview.nvim"
+
+  use {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+    },
     config = function ()
+      require('neogit').setup()
+    end
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = {'lua', 'typescript', 'javascript', 'go', 'python', 'toml', 'json', 'sql','org'},
+        ensure_installed = { 'lua', 'typescript', 'javascript', 'go', 'python', 'toml', 'json', 'sql', 'org' },
         sync_install = false,
         auto_install = true,
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = {'org'}
+          additional_vim_regex_highlighting = { 'org' }
         }
       })
     end
@@ -174,7 +197,7 @@ return packer.startup(function(use)
 
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'nvim-tree/nvim-web-devicons'},
+    requires = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('lualine').setup()
     end
@@ -187,7 +210,7 @@ return packer.startup(function(use)
   }
   use {
     "xiyaowong/transparent.nvim",
-    config = function ()
+    config = function()
       require("transparent").setup({
         'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
         'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
@@ -205,7 +228,7 @@ return packer.startup(function(use)
       "kristijanhusak/vim-dadbod-ui",
       "kristijanhusak/vim-dadbod-completion",
     },
-    config = function ()
+    config = function()
       require("oz.db").setup()
     end,
     cmd = { "DBUIToggle", "DBUI", "DBUIAddConnection", "DBUIFindBuffer", "DBUIRenameBuffer", "DBUILastQueryInfo" },
@@ -213,7 +236,7 @@ return packer.startup(function(use)
   -- plugin development
   use {
     "folke/neodev.nvim",
-    config = function ()
+    config = function()
       require("neodev").setup()
     end
   }
@@ -221,14 +244,12 @@ return packer.startup(function(use)
   -- org mode
   use {
     "nvim-orgmode/orgmode",
-    config = function ()
+    config = function()
       require('orgmode').setup_ts_grammar()
       require("orgmode").setup({
-        org_agenda_files= {"~/org/agenda"},
+        org_agenda_files = { "~/org/agenda" },
         org_default_notes_file = "~/org/notes.org",
       })
     end
   }
-
 end)
-

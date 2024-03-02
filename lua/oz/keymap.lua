@@ -106,10 +106,12 @@ vim.keymap.set("n", "<leader>zz", zen.toggle)
 
 local terminals = require("oz.terminals")
 
+local ngit = require("neogit")
+
 wk.register({
   g = {
     name = "Git",
-    t = {terminals.lazygit_toggle, "Open lazy git"},
+    t = {function () ngit.open({kind="split"}) end, "Open lazy git"},
     s = {
       name = "Search",
       s = {

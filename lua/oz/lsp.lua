@@ -16,7 +16,8 @@ local servers = {
   "gopls",
   "html",
   "volar",
-  "ruff_lsp"
+  "ruff_lsp",
+  "elixirls",
 }
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -34,6 +35,7 @@ lsp.docker_compose_language_service.setup(commonOptions)
 lsp.gopls.setup(commonOptions)
 lsp.html.setup(commonOptions)
 lsp.volar.setup(commonOptions)
+lsp.elixirls.setup(commonOptions)
 -- https://github.com/astral-sh/ruff-lsp
 lsp.ruff_lsp.setup({
   on_attach = function(client, bufnr)

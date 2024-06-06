@@ -241,6 +241,15 @@ return packer.startup(function(use)
     end
   }
 
+  -- outline
+
+  use {
+    "hedyhli/outline.nvim",
+    config = function ()
+      require("outline").setup()
+    end
+  }
+
   -- org mode
   use {
     "nvim-orgmode/orgmode",

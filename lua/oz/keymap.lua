@@ -9,6 +9,7 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 local wk = require("which-key")
+local outline = require("outline")
 
 -- Set leader key to spacebar 
 keymap("", "<Space>", "<Nop>", opts)
@@ -146,7 +147,8 @@ wk.register({
     r = {function() require("trouble").toggle("lsp_references") end, "List LSP references"},
     i = {tscope.lsp_incoming_calls, "List LSP incoming calls"},
     s = {tscope.lsp_document_symbols, "List of document symbols"},
-    f = {function () vim.lsp.buf.format() end, "Formate buffer"}
+    f = {function () vim.lsp.buf.format() end, "Formate buffer"},
+    o = {function () outline.toggle() end, "Show symbols" }
   }
 }, {prefix="<leader>"})
 

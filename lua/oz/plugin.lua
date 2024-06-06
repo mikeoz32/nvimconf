@@ -170,9 +170,9 @@ return packer.startup(function(use)
       -- Only one of these is needed, not both.
       "nvim-telescope/telescope.nvim", -- optional
     },
-    config = function ()
-      require('neogit').setup()
-    end
+    -- config = function ()
+    --   require('neogit').setup()
+    -- end
   }
 
   use {
@@ -237,6 +237,15 @@ return packer.startup(function(use)
     "folke/neodev.nvim",
     config = function()
       require("neodev").setup()
+    end
+  }
+
+  -- outline
+
+  use {
+    "hedyhli/outline.nvim",
+    config = function ()
+      require("outline").setup()
     end
   }
 

@@ -144,11 +144,12 @@ wk.register({
 wk.register({
   c = {
     name="Code Inspection",
+    d = {function() require("trouble").toggle("diagnostics") end, "List LSP references"},
     r = {function() require("trouble").toggle("lsp_references") end, "List LSP references"},
-    i = {tscope.lsp_incoming_calls, "List LSP incoming calls"},
-    s = {tscope.lsp_document_symbols, "List of document symbols"},
-    f = {function () vim.lsp.buf.format() end, "Formate buffer"},
-    o = {function () outline.toggle() end, "Show symbols" }
+    i = {function() require("trouble").toggle("lsp_incoming_calls") end, "List LSP incoming calls"},
+    f = {function () vim.lsp.buf.format() end, "Format buffer"},
+    s = {function () outline.toggle() end, "Show symbols" },
+    q = {function() require("trouble").toggle("qflist") end, "Quick fix list"},
   }
 }, {prefix="<leader>"})
 

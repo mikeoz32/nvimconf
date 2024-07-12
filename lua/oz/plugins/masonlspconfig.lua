@@ -21,6 +21,7 @@ return {
   },
   config = function(_, opts)
     require('mason-lspconfig').setup({ ensure_installed = servers })
+
   end
   -- config = true,
   -- init = function()

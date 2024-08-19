@@ -41,5 +41,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 
-vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme tokyonight]]
 vim.g.python3_host_prog = 'py'
+
+if vim.g.neovide then
+  vim.g.neovide_scale_factor = 0.5
+end

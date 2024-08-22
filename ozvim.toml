@@ -1,0 +1,5 @@
+[global]
+backup=false
+
+[lang.python]
+enabled=true

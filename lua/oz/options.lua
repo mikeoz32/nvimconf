@@ -1,4 +1,4 @@
-vim.opt.backup = fasle
+vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.cmdheight = 2 -- height of nvim command status bar 
 vim.opt.completeopt = {"menuone", "noselect"} -- for cmp

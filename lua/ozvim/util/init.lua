@@ -21,6 +21,17 @@ function M.key_map(modes, lhs, rhs, opts)
   map(modes, lhs, rhs, vim.tbl_deep_extend('force', common_opts, opts or {}))
 end
 
+function M.expect_files_in_path(files)
+  local pattern = M.find_in_path(files)
+  return #pattern > 0
+end
+
+function M.find_in_path(files)
+  files = files or {}
+
+  return vim.fs.find(files, { path = vim.uv.cwd() })
+end
+
 function M.dbg(val)
   vim.api.nvim_echo({ { vim.inspect(val) } }, true, {})
 end

@@ -44,7 +44,8 @@ return {
   {
     import = "ozvim.plugins.lang.python",
     enabled = function()
-      return OzVim.options.lang_enabled("python")
+      local project = require("ozvim.project")
+      return OzVim.options.lang_enabled("python") and project.capable("python")
     end
   },
 }

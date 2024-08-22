@@ -1,3 +1,4 @@
+local venv = require("ozvim.py.venv")
 return {
   {
     'nvim-treesitter/nvim-treesitter',
@@ -19,13 +20,29 @@ return {
     opts = {
       servers = {
         pyright = {
-          enabled = true
+          enabled = true,
+          analytics = {
+            typeCheckingMode = "strict"
+          }
         },
         ruff_lsp = {
           enabled = true
         }
       },
     },
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+
+    dependencies = { 'nvim-tree/nvim-web-devicons', "folke/noice.nvim" },
+    opts = {
+      sections = {
+        -- lualine_a = { "mode" },
+        -- lualine_b = { "branch" },
+        -- lualine_c = { "buffers" },
+        lualine_x = { venv.get_active_env() }
+      }
+    }
   },
   {
     "nvim-neotest/neotest",
@@ -40,8 +57,8 @@ return {
           runner = "pytest",
           -- python = ".venv/bin/python",
           python = function()
-            local py = require("ozvim.py.hatch")
-            return py.get_active_env_path() .. '/Scripts/python.exe'
+            local py = require("ozvim.py.venv")
+            return py.get_active_env_path() .. '\\Scripts\\python.exe'
           end,
           pytest_discover_instances = true,
         },

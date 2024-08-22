@@ -25,7 +25,7 @@ return {
       local lsp = require("lspconfig")
       local cmp = require("cmp_nvim_lsp")
 
-      local servers = opts.servers
+      local servers = opts.servers or {}
       local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(),
         cmp.default_capabilities())
 

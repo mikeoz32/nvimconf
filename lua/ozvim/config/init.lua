@@ -21,9 +21,11 @@ function M.init()
   M.did_init = true
   --- Load options and merge them with defaults
   OzVim.options.setup()
+  require("ozvim.project").setup()
   OzVim.lazy.setup()
   require("ozvim.py").setup()
   require("ozvim.config.keymap")
+  OzVim.dbg(OzVim.expect_files_in_path({ "pyproject.toml" }))
 end
 
 function M.load_toml(path)

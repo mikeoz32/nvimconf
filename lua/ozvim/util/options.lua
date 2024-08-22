@@ -54,7 +54,7 @@ M.options = {}
 function M.setup()
   M.options = defaults
   for _, v in ipairs(M.get_config_dirs()) do
-    M.options = vim.tbl_deep_extend("force", M.options, OzVim.toml.load(v))
+    M.options = vim.tbl_deep_extend("force", M.options, OzVim.toml.load(v) or {})
   end
 
   for k, v in pairs(M.options.global) do

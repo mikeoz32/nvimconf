@@ -10,7 +10,7 @@ function M.load(path)
     local parsed = toml.parse(data)
     return parsed or {}
   end
-  return {}
+  return nil
 end
 
 return M

@@ -1,22 +1,30 @@
 local hatch = require("ozvim.py.hatch")
+local project = require("ozvim.project")
+
+function project_names()
+  names = ""
+  for _, name in ipairs(project.names()) do
+    names = names .. name .. '|'
+  end
+  return names
+end
+
 return {
   "nvim-lualine/lualine.nvim",
 
   dependencies = { 'nvim-tree/nvim-web-devicons', "folke/noice.nvim" },
-  opts = function()
-    return {
-      options = {
-        theme = "auto",
-        globalstatus = true
-      },
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
-        lualine_c = { "buffers" },
-        lualine_x = { hatch.get_active_env() }
-      }
+  opts         =
+  {
+    options = {
+      theme = "auto",
+      globalstatus = true
+    },
+    sections = {
+      lualine_a = { "mode" },
+      lualine_b = { "branch" },
+      lualine_c = { function() return project_names() end }
     }
-  end,
+  },
   -- config = function()
   --   require('lualine').setup({
   --     options = {

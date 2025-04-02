@@ -26,7 +26,12 @@ end
 local function update_lsp_client(client, env_name)
   local env = environments[env_name]
   if env and env.path then
-    local path = env.path .. "\\Scripts\\python.exe"
+    local path 
+    if vim.fn.has("win32") == 1 then
+      path = env.path .. "\\Scripts\\python.exe"
+    else
+      path = env.path .. "/bin/python"
+    end
 
     if vim.fn.executable(path) then
       if client.settings then

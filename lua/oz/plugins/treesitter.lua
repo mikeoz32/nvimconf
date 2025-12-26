@@ -14,7 +14,7 @@ return {
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
-    vim.api.create_autocmd("User", {
+    vim.api.nvim_create_autocmd("User", {
       pattern = "TSUpdate",
       callback = function()
         require("nvim-treesitter.parsers").crystal = {
@@ -24,6 +24,14 @@ return {
             generate_from_json = false,
             queries = 'queries/nvim'
           },
+        }
+        require("nvim-treesitter.parsers").org = {
+          install_info = {
+            url = 'https://github.com/milisims/tree-sitter-org',
+            revision = 'main',
+            files = { 'src/parser.c', 'src/scanner.c' },
+          },
+          filetype = 'org',
         }
       end
     })

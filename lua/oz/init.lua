@@ -10,3 +10,5 @@ require("oz.config").setup()
 require("oz.options")
 
 require("oz.keymap")
+
+require("oz.yaia")

@@ -1,27 +1,27 @@
 local servers = {
   "lua_ls",
-  "rust_analyzer",
+  -- "rust_analyzer",
   "pyright",
   "docker_compose_language_service",
-  "tsserver",
+  "ts_ls",
   "gopls",
   "html",
-  "volar",
+  "vue_ls",
   "tailwindcss",
-  "ruff_lsp",
+  "ruff",
   "elixirls",
   "emmet_language_server",
-  "omnisharp"
+  "omnisharp",
+  "jdtls",
 }
 
 return {
-  "williamboman/mason-lspconfig",
+  "mason-org/mason-lspconfig",
   dependencies = {
     "mason.nvim"
   },
   config = function(_, opts)
-    require('mason-lspconfig').setup({ ensure_installed = servers })
-
+    require('mason-lspconfig').setup({ ensure_installed = servers, automatic_enable = true })
   end
   -- config = true,
   -- init = function()

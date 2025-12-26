@@ -1,8 +1,8 @@
 local hatch = require("ozvim.py.hatch")
 local project = require("ozvim.project")
 
-function project_names()
-  names = ""
+local function project_names()
+  local names = ""
   for _, name in ipairs(project.names()) do
     names = names .. name .. '|'
   end

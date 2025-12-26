@@ -6,13 +6,13 @@ return
     ft = { 'org' },
     config = function()
       -- Setup orgmode
-      -- local cwd = vim.uv.cwd() .. '/docs/**/*'
       require('orgmode').setup({
-        org_agenda_files = { '~/orgfiles/**/*' },
+        org_agenda_files = { '~/orgfiles/**/*', vim.uv.cwd() .. '/docs/**/*' },
         org_default_notes_file = '~/orgfiles/refile.org',
         org_startup_indented = true,
         org_adapt_indentation = true,
-        org_indent_mode_turns_off_org_adapt_indentation = false
+        org_indent_mode_turns_off_org_adapt_indentation = false,
+        org_todo_keywords = {'TODO', 'WORKING', 'ON_HOLD','|', 'DONE'}
       })
 
       -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option

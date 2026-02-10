@@ -16,7 +16,7 @@ local servers = {
 }
 
 return {
-  "mason-org/mason-lspconfig",
+  "mason-org/mason-lspconfig.nvim",
   dependencies = {
     "mason.nvim"
   },
